@@ -1,6 +1,6 @@
 # Third-Party Assets
 
-All external assets used in the final game are available free of charge. Copies of the relevant license notices are stored beside this file.
+These are the art, font and audio packs used in the project. The license files are in this folder.
 
 | Asset | Use in Emberfall | Source | License |
 |---|---|---|---|
@@ -10,5 +10,3 @@ All external assets used in the final game are available free of charge. Copies 
 | Kenney RPG Audio | Combat, pickup, spell, chest, and footstep effects | https://kenney.nl/assets/rpg-audio | CC0 1.0 |
 | Kenney Interface Sounds | Button, confirmation, and error effects | https://kenney.nl/assets/interface-sounds | CC0 1.0 |
 | Memoraphile - Spooky Dungeon | Looping dungeon music | https://opengameart.org/content/spooky-dungeon | CC0 option selected on source page |
-
-No paid marketplace dependency is required to open, play, or build the project. Asset authors retain credit for their work even where attribution is optional under CC0.

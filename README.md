@@ -1,40 +1,33 @@
-# Emberfall
+# Emberfall - PGE Assignment 1
 
-A 2D dungeon action game and physics demonstration built with Unity 6.3 LTS (6000.3.9f1).
+A small 2D dungeon game made in Unity 6.3 (6000.3.9f1) for a game physics assignment.
 
-## Open and play
+The aim is to clear three rooms, collect their sigils and beat the boss. There is also a separate scene for trying out Euler integration and circle, AABB and SAT collisions.
 
-1. Clone this repository. The bundled art, audio, and font files are stored directly in Git.
-2. Add the repository folder in Unity Hub and open with Unity 6000.3.9f1.
-3. Open `Assets/Emberfall/Scenes/Emberfall.unity` and press Unity's standard Play button.
-4. Press Enter or select Begin Adventure on the title screen.
+## Running it
 
-The adventure scene contains saved environment, actor, collectible, and effect groups under `__SYSTEMS/Adventure`. Expand these in the Hierarchy to inspect and edit the starting level, sprites, enemies, and player. The camera is under `__CAMERAS`. Retry reloads this saved scene. Scene walkability is stored on the Adventure component; changing the floor layout requires updating its walkability data in code.
+Open the project in Unity Hub, then open `Assets/Emberfall/Scenes/Emberfall.unity` and press Play. The level objects are under `__SYSTEMS > Adventure` in the Hierarchy.
 
-`Assets/Emberfall/Scenes/PhysicsLab.unity` is the separate physics demonstration. Both scenes are enabled in Build Settings, with the adventure first.
+`Assets/Emberfall/Scenes/PhysicsLab.unity` is the physics demo. It can also be opened from the game's title screen.
 
 ## Controls
 
-| Action | Input |
-| --- | --- |
-| Move | WASD / arrow keys |
-| Attack | J / left mouse |
-| Dash | Space |
-| Nova | Q |
-| Heal | H |
-| Interact | E |
-| Pause | Escape |
+- WASD / arrow keys: move
+- J / left click: attack
+- Space: dash
+- Q: nova attack
+- H: use a potion
+- E: interact
+- Escape: pause
 
-## Development
+In Physics Lab, use 1/2/3 to change collision mode, A/D to apply force, Space for an impulse, and R to reset.
 
-- Use Scene view, the Hierarchy, Inspector, and Unity's Play controls for everyday work.
-- `Tools > Testing > Run Gameplay Checks`: run from a fresh adventure in Play mode. Checks combat, progression, collision algorithms, and scene reload. The check resets the play session.
-- `Tools > Project > Validate Scenes`: validate required scenes, build configuration, assets, and documentation.
-- `Tools > Project > Prepare Scenes`: explicit project setup; preserves existing adventure objects, recreates the generated Physics Lab, and configures rendering. Ordinary editing does not require running it.
-- `Tools > Build > Windows Game`: creates a Windows build at `Builds/Windows/Emberfall.exe`. Unity's standard Build Profiles window also works.
+## Project notes
 
-Game logic is in `Assets/Emberfall/Scripts/Gameplay`; presentation, audio, and physics have separate UI, Core, and Physics folders. The current HUD uses IMGUI. Actor movement and dungeon walkability are handled by gameplay code; actor Rigidbody2D components do not drive movement. A full conversion to prefab-based actor behaviours and Canvas/Tilemap authoring would be a separate refactor.
+Most game logic is in `EmberfallGame.cs`. The UI is in `EmberfallUI.cs`, sound is in `ProjectAudio.cs`, and the physics calculations are in the Physics folder.
 
-Asset credits and licenses are under `Assets/Emberfall/Documentation`. The technical report is a draft with student-specific placeholders.
+The level is saved in the scene. Floor collision still uses a grid stored by the game script, so moving a floor sprite alone will not change where the player can walk. The UI uses OnGUI rather than a Canvas.
 
-Only source assets, their `.meta` files, packages, and project settings are versioned. Unity caches, local editor settings, generated IDE files, and build outputs are ignored.
+There are a few helper options under Tools for checking the game, setting up the scenes and building for Windows. Run gameplay checks from a fresh Play session; they reset the level afterwards. A Windows build goes in `Builds/Windows`.
+
+Art and audio credits are in `Assets/Emberfall/Documentation/ThirdPartyAssets.md`. The report draft still needs personal details, screenshots and contribution notes.

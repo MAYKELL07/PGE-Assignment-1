@@ -2,11 +2,7 @@ using UnityEngine;
 
 namespace Emberfall.Physics
 {
-    /// <summary>
-    /// A small, explicit physics body demonstrating force accumulation and
-    /// semi-implicit Euler integration: acceleration = force / mass,
-    /// velocity += acceleration * dt, position += velocity * dt.
-    /// </summary>
+    // Updates velocity before position using force / mass.
     public sealed class EulerBody2D
     {
         public Vector2 Position { get; private set; }
@@ -21,9 +17,15 @@ namespace Emberfall.Physics
             Mass = Mathf.Max(0.01f, mass);
         }
 
-        public void AddForce(Vector2 force) => AccumulatedForce += force;
+        public void AddForce(Vector2 force)
+        {
+            AccumulatedForce += force;
+        }
 
-        public void AddImpulse(Vector2 impulse) => Velocity += impulse / Mass;
+        public void AddImpulse(Vector2 impulse)
+        {
+            Velocity += impulse / Mass;
+        }
 
         public void Integrate(float deltaTime, float linearDrag)
         {
